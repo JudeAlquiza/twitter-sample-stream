@@ -17,7 +17,7 @@ public class Worker : BackgroundService
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         // By default, the Console's output encoding is ASCII and some tweets are 
-        // a different language, hence different set of characters and will appear 
+        // at a different language, hence different set of characters and will appear 
         // as '?' in the feed, we set this to UTF8 to make sure those other characters
         // are displayed properly.
         Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -27,11 +27,13 @@ public class Worker : BackgroundService
         await _twitterService.SampleStreamV2StartListeningAsync(OnTweetReceived, stoppingToken);
     }
 
-    private void OnTweetReceived(object? sender, TweetV2ReceivedEventArgs eventArgs)
+    private static void OnTweetReceived(object? sender, TweetV2ReceivedEventArgs eventArgs)
     {
         Console.WriteLine("--------------- Tweet Received ---------------");
 
-        Console.WriteLine(eventArgs.Tweet.Text);
+        Console.WriteLine($"Tweet Id: {eventArgs.Tweet.Id}");
+        Console.WriteLine($"Tweet Id: {eventArgs.Tweet}");
+        Thread.Sleep(2000);
 
         Console.WriteLine("----------------------------------------------\n");
     }
