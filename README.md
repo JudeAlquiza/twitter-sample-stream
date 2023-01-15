@@ -1,7 +1,10 @@
 # Twitter Stream Project
 
 ## Local Setup
-### Configuration
+### Twitter Stream Listener 
+#### Configuration
+The Twitter Stream Listener solution file is located at core/TwitterStreamListener
+
 Local configuration uses secret manager, run the following command from the directory in which the project file exists:
 ```
 dotnet user-secrets set "TwitterApi:ConsumerKey" "<Enter your consumer key here>"
