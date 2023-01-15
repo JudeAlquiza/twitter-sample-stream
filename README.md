@@ -1,4 +1,4 @@
-# Twitter Sample Stream
+# Twitter Stream Project
 
 ## Local Setup
 ### Configuration
