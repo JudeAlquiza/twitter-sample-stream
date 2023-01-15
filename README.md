@@ -1,4 +1,4 @@
-# Twitter Sample Stream
+# Twitter Stream Project
 
 ## Local Setup
 ### Configuration
@@ -8,3 +8,5 @@ dotnet user-secrets set "TwitterApi:ConsumerKey" "<Enter your consumer key here>
 dotnet user-secrets set "TwitterApi:ConsumerSecret" "<Enter your consumer secret here>"
 dotnet user-secrets set "TwitterApi:BearerToken" "<Enter your bearer token here>"
 ```
+
+For security purposes, we store these information to secrets manager so that we don't include them in the source control.
