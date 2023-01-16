@@ -14,3 +14,13 @@ dotnet user-secrets set "EventHub:ConnectionString" "<Enter your event hub conne
 ```
 
 For security purposes, we store these information to secrets manager so that we don't include them in the source control.
+
+#### Comsos Db Query
+For reference, this is the query to get the distinct hash tags together with their count.
+```sql
+SELECT 
+  hashTag, 
+  COUNT(1) AS hashTagCount 
+FROM c JOIN hashTag in c.hashTags 
+GROUP BY hashTag
+```
