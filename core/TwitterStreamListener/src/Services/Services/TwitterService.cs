@@ -1,13 +1,7 @@
 ﻿using Tweetinvi;
 using Tweetinvi.Events.V2;
 
-namespace Services;
-
-public interface ITwitterService
-{
-    Task SampleStreamV2StartListeningAsync(
-        EventHandler<TweetV2ReceivedEventArgs> onTweetReceived, CancellationToken cancellationToken = default); 
-}
+namespace Services.Services;
 
 public class TwitterService : ITwitterService
 {

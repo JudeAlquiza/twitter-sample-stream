@@ -1,11 +1,12 @@
-using Listener;
+using Listener.Workers;
 using Services;
 
 var host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>
     {
         services.AddServiceLayer();
-        services.AddHostedService<Worker>();
+
+        services.AddHostedService<TwitterStreamListenerWorker>();
     })
     .Build();
 

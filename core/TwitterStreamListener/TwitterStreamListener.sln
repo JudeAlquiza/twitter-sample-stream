@@ -7,11 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5B9D69B4-52D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3D8D63B2-E673-4FE8-9B5B-1551A32F55B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Listener", "src\Listener\Listener.csproj", "{8E8D21DD-7FA6-4B1E-A7F1-810871EFBB95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Listener", "src\Listener\Listener.csproj", "{8E8D21DD-7FA6-4B1E-A7F1-810871EFBB95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "src\Models\Models.csproj", "{4E9EAF47-F3EB-4490-B0EB-9635073182CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "src\Models\Models.csproj", "{4E9EAF47-F3EB-4490-B0EB-9635073182CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "src\Services\Services.csproj", "{BA054F69-DB90-47A5-A901-9D140B847F9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "src\Services\Services.csproj", "{BA054F69-DB90-47A5-A901-9D140B847F9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
