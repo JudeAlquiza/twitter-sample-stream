@@ -1,6 +1,9 @@
-﻿namespace Models.HashTag.GetTop10HashTagsByHourWindowEndpoint;
+﻿using FastEndpoints;
+
+namespace Models.HashTag.GetTop10HashTagsByHourWindowEndpoint;
 
 public class GetTop10HashTagsByHourWindowRequest
 {
-    public int HourWindow { get; set; }
+    [BindFrom("hourWindow")] 
+    public int HourWindow { get; set; } = 1;
 }
