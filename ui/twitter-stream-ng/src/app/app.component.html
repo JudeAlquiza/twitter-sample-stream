@@ -1,1 +1,28 @@
-<div>App works!</div>
+<div class="main-container">
+  <h2>Twitter Stream Project</h2>
+  <hr style="width: 80%;">
+  <div class="main-content">
+    <div class="main-content__stream-feed">
+      <div>Stream Feed (coming soon..)</div>
+    </div>
+    <div class="main-content__top10-hashtags">
+      <h4>Top 10 hash tags</h4>
+      <h6>(Past 7 hours)</h6>
+      <hr>
+      <div>
+        <mat-card *ngFor="let hashTag of top10HashTags; index as i;" style="margin-bottom: 1rem; padding: 0.5rem;">
+          <mat-card-header style="padding: 0;">
+            <mat-card-title style="font-size: medium; margin-top: -0.5rem;">{{ i + 1 }}. {{ hashTag }}</mat-card-title>
+            <mat-card-subtitle style="font-size: smaller; margin-top: -0.5rem;">Appeared 10 times in tweets</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+      </div>
+    </div>
+    <div class="main-content__total-tweets">
+      <h4>Total number of tweets</h4>
+      <h6>(Since start)</h6>
+      <hr>
+      <div>{{ totalTweets }}</div>
+    </div>
+  </div>
+</div>

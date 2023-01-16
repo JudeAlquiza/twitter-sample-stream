@@ -1,0 +1,31 @@
+:host {
+    font-size: 1rem;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.main-content {
+    display: flex;
+    justify-items: center;
+    flex-direction: row;
+    width: 80%;
+
+    &__stream-feed {
+        width: 30rem;
+    }
+
+    &__top10-hashtags {
+        width: 20rem;
+        margin-left: 5rem;
+    }
+
+    &__total-tweets {
+        width: 20rem;
+        margin-left: 5rem;
+    }
+}
