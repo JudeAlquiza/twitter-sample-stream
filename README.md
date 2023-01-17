@@ -14,7 +14,7 @@ Note that I've used the approach in this [article](https://learn.microsoft.com/e
 - Once a tweet is received, information about the actual text of the tweet and hash tags from the tweet are extracted and sent to the event hub. Tweet information is sent to the *tweet-received* topic and hash tag information is sent to the *hash-tag-received* topic.
 - Data for both tweets and hash tags from the event hub are piped to an Azure SQL Server database via an Azure Stream Analytics Job as shown in the diagram above. 
 - Web API exposes endpoints for returning the top 10 hash tags given an hour window value (for example hourWindow=1 means get the top 10 hash tags for the past hour, etc..) and total number of tweets received.
-- Angular app then calls this Web API and displays the needed data in the browser, the app is set to refresh every 30 seconds so updated data can be retrieved and shown to the user.
+- Angular app then calls this Web API and displays the needed data in the browser, the app is set to refresh every 15 seconds so updated data can be retrieved and shown to the user.
 
 
 ## Twitter Stream Listener 
