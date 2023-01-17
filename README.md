@@ -31,6 +31,28 @@ dotnet user-secrets set "EventHub:ConnectionString" "<Enter your event hub conne
 
 For security purposes, we store these information to secrets manager so that we don't include them in the source control.
 
+## Event Hub
+### Azure Cloud Configuration
+Event hub namespace is setup in Azure called `tweet-stream`, and two event hub is added under this namespace, `tweet-received` and `hash-tag-received`
+
+The ARM template is added under the infra/azure/arm folder for reference.
+
+## SQL Server Database
+### Azure Cloud Configuration
+TwitterStreamDb SQL Server database is setup, and two tables are added under this database, one is `[dbo].[HashTags]` and the other one is `[dbo].[Tweets]`.
+
+A stored procedure is also added to retrieve the top 10 hash tags given an hour window value `[dbo].[SpGetTop10HashTagsByHourWindow] `, for example the top 10 hash tags for the past 5 hours.
+
+The ARM template is added under the infra/azure/arm folder for reference.
+
+## Stream Analytics
+### Azure Cloud Configuration
+A stream analytics job is setup that pipes data from input to ouput, in this case, input is set to be the event hub, and output is the SQL Server DB. Shown below is the query snapshot for reference.
+
+![Stream analytics query](/images/stream_analytics_query.png "Stream analytics query")
+
+The ARM template is added under the infra/azure/stream-analytics folder for reference.
+
 ## Twitter Stream Web API
 ### Local Configuration
 The Twitter Stream Web API solution file is located in this folder core/TwitterStreamWebAPI
@@ -48,10 +70,11 @@ Here's a screenshot of the UI
 
 ![UI screenshot](/images/ui_screenshot.png "UI screenshot")
 
+**The app component is set to do a refresh every 15 seconds to retrieve the most recent data from the Web API.**
+
 ### Local Installation
 The Twitter Stream Angular App project is located in this folder ui/twitter-stream-ng
 
 Run `npm install` to install the packages and run `ng serve` to run the angular app locally.
 
 Navigate to `http://localhost:4200` to access the app.
-
