@@ -19,7 +19,7 @@ Note that I've used the approach in this [article](https://learn.microsoft.com/e
 
 ## Twitter Stream Listener 
 ### Local Configuration
-The Twitter Stream Listener solution file is located at core/TwitterStreamListener
+The Twitter Stream Listener solution file is located in this folder core/TwitterStreamListener
 
 Local configuration uses secret manager, run the following command from the directory where the Listener project file is:
 ```
@@ -33,7 +33,7 @@ For security purposes, we store these information to secrets manager so that we 
 
 ## Twitter Stream Web API
 ### Local Configuration
-The Twitter Stream Web API solution file is located at core/TwitterStreamWebAPI
+The Twitter Stream Web API solution file is located in this folder core/TwitterStreamWebAPI
 
 Local configuration uses secret manager, run the following command from the directory where the Web API project file is:
 ```
@@ -41,3 +41,17 @@ dotnet user-secrets set "ConnectionStrings:TwitterStreamDb" "<Enter your connect
 ```
 
 For security purposes, we store these information to secrets manager so that we don't include them in the source control.
+
+## Twitter Stream Angular App
+### UI Screenshot
+Here's a screenshot of the UI
+
+![UI screenshot](/images/ui_screenshot.png "UI screenshot")
+
+### Local Installation
+The Twitter Stream Angular App project is located in this folder ui/twitter-stream-ng
+
+Run `npm install` to install the packages and run `ng serve` to run the angular app locally.
+
+Navigate to `http://localhost:4200` to access the app.
+
