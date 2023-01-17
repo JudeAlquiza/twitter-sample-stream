@@ -17,9 +17,8 @@ Note that I've used the approach in this [article](https://learn.microsoft.com/e
 - Angular app then calls this Web API and displays the needed data in the browser, the app is set to refresh every 30 seconds so updated data can be retrieved and shown to the user.
 
 
-## Local Setup
-### Twitter Stream Listener 
-#### Configuration
+## Twitter Stream Listener 
+### Local Configuration
 The Twitter Stream Listener solution file is located at core/TwitterStreamListener
 
 Local configuration uses secret manager, run the following command from the directory where the Listener project file is:
@@ -32,8 +31,8 @@ dotnet user-secrets set "EventHub:ConnectionString" "<Enter your event hub conne
 
 For security purposes, we store these information to secrets manager so that we don't include them in the source control.
 
-### Twitter Stream Web API
-#### Configuration
+## Twitter Stream Web API
+### Local Configuration
 The Twitter Stream Web API solution file is located at core/TwitterStreamWebAPI
 
 Local configuration uses secret manager, run the following command from the directory where the Web API project file is:
