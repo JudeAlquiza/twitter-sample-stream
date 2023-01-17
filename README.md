@@ -20,7 +20,7 @@ Note that I've used the approach in this [article](https://learn.microsoft.com/e
 ## Local Development Setup
 ### Twitter Stream Listener 
 #### Configuration
-The Twitter Stream Listener solution file is located at core/TwitterStreamListener
+The Twitter Stream Listener solution file is located in this folder core/TwitterStreamListener
 
 Local configuration uses secret manager, run the following command from the directory where the Listener project file is:
 ```
@@ -34,7 +34,7 @@ For security purposes, we store these information to secrets manager so that we 
 
 ### Twitter Stream Web API
 #### Configuration
-The Twitter Stream Web API solution file is located at core/TwitterStreamWebAPI
+The Twitter Stream Web API solution file is located in this folder core/TwitterStreamWebAPI
 
 Local configuration uses secret manager, run the following command from the directory where the Web API project file is:
 ```
@@ -45,5 +45,10 @@ For security purposes, we store these information to secrets manager so that we 
 
 ### Twitter Stream Angular App
 #### Installation
+The Twitter Stream Angular App project is located in this folder ui/twitter-stream-ng
+
+Run `npm install` to install the packages and run `ng serv`e to run the angular app locally.
+
+Navigate to `https://localhost:4200` to access the app.
 
 ## Azure Cloud Setup
