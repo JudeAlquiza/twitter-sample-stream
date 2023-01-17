@@ -31,6 +31,9 @@ dotnet user-secrets set "EventHub:ConnectionString" "<Enter your event hub conne
 
 For security purposes, we store these information to secrets manager so that we don't include them in the source control.
 
+### Notes
+Twitter Stream Listener uses [tweetinvi](https://github.com/linvi/tweetinvi) to listen the sample stream API endpoint, and it also takes care of the rate limit handling.
+
 ## Event Hub
 ### Azure Cloud Configuration
 Event hub namespace is setup in Azure called `tweet-stream`, and two event hub is added under this namespace, `tweet-received` and `hash-tag-received`
@@ -78,3 +81,9 @@ The Twitter Stream Angular App project is located in this folder ui/twitter-stre
 Run `npm install` to install the packages and run `ng serve` to run the angular app locally.
 
 Navigate to `http://localhost:4200` to access the app.
+
+## Further Improvements
+### `backfill_minutes` parameter
+One major improvement for this project is to make use of the `backfill_minutes` query parameter when calling the Twitter sample stream API endpoint, we can keep track of how much time since the last failed attempt, persist that somewhere and when the app is ready to listen again, we passed that as the `backfill_minutes` to retrieve the lost tweets we missed. This parameter is in minutes so for example `backfill_minutes=5` makes the stream listener start 5 minutes from when the call is made, this means that duplicate delivery of tweets might happen and de-duplication strategies must be implemented on the consuming side to ensure data integrity.
+
+This implementation was not included in the code because using `backfill_minutes` requires an approved [Academic Research](https://developer.twitter.com/en/products/twitter-api/academic-research) level of access. See [Twitter's Sample Stream API](https://developer.twitter.com/en/docs/twitter-api/tweets/volume-streams/api-reference/get-tweets-sample-stream) for more info on 
