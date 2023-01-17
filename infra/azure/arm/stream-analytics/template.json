@@ -1,0 +1,143 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "streamingjobs_twitter_stream_project_name": {
+            "defaultValue": "twitter-stream-project",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.StreamAnalytics/streamingjobs",
+            "apiVersion": "2021-10-01-preview",
+            "name": "[parameters('streamingjobs_twitter_stream_project_name')]",
+            "location": "East US 2",
+            "sku": {
+                "name": "Standard",
+                "capacity": 3
+            },
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "sku": {
+                    "name": "Standard"
+                },
+                "outputStartMode": "JobStartTime",
+                "outputStartTime": "2023-01-16T15:35:45.427Z",
+                "eventsOutOfOrderPolicy": "Adjust",
+                "outputErrorPolicy": "Drop",
+                "eventsOutOfOrderMaxDelayInSeconds": 5,
+                "eventsLateArrivalMaxDelayInSeconds": 5,
+                "dataLocale": "en-US",
+                "compatibilityLevel": "1.2",
+                "contentStoragePolicy": "SystemAccount",
+                "jobType": "Cloud"
+            }
+        },
+        {
+            "type": "Microsoft.StreamAnalytics/streamingjobs/inputs",
+            "apiVersion": "2021-10-01-preview",
+            "name": "[concat(parameters('streamingjobs_twitter_stream_project_name'), '/hash-tag-event-hub-input')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.StreamAnalytics/streamingjobs', parameters('streamingjobs_twitter_stream_project_name'))]"
+            ],
+            "properties": {
+                "type": "Stream",
+                "datasource": {
+                    "type": "Microsoft.EventHub/EventHub",
+                    "properties": {
+                        "eventHubName": "hash-tag-received",
+                        "serviceBusNamespace": "tweet-stream",
+                        "sharedAccessPolicyName": "Listen",
+                        "authenticationMode": "ConnectionString"
+                    }
+                },
+                "compression": {
+                    "type": "None"
+                },
+                "serialization": {
+                    "type": "Json",
+                    "properties": {
+                        "encoding": "UTF8"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.StreamAnalytics/streamingjobs/inputs",
+            "apiVersion": "2021-10-01-preview",
+            "name": "[concat(parameters('streamingjobs_twitter_stream_project_name'), '/tweet-event-hub-input')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.StreamAnalytics/streamingjobs', parameters('streamingjobs_twitter_stream_project_name'))]"
+            ],
+            "properties": {
+                "type": "Stream",
+                "datasource": {
+                    "type": "Microsoft.EventHub/EventHub",
+                    "properties": {
+                        "eventHubName": "tweet-received",
+                        "serviceBusNamespace": "tweet-stream",
+                        "sharedAccessPolicyName": "Listen",
+                        "authenticationMode": "ConnectionString"
+                    }
+                },
+                "compression": {
+                    "type": "None"
+                },
+                "serialization": {
+                    "type": "Json",
+                    "properties": {
+                        "encoding": "UTF8"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.StreamAnalytics/streamingjobs/outputs",
+            "apiVersion": "2021-10-01-preview",
+            "name": "[concat(parameters('streamingjobs_twitter_stream_project_name'), '/hash-tag-sql-db-output')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.StreamAnalytics/streamingjobs', parameters('streamingjobs_twitter_stream_project_name'))]"
+            ],
+            "properties": {
+                "datasource": {
+                    "type": "Microsoft.Sql/Server/Database",
+                    "properties": {
+                        "maxWriterCount": 1,
+                        "maxBatchCount": 10000,
+                        "table": "[[dbo].[HashTags]",
+                        "server": "twitterstreamproject",
+                        "database": "TwitterStreamDb",
+                        "user": "twitterstreamadmin",
+                        "authenticationMode": "ConnectionString"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.StreamAnalytics/streamingjobs/outputs",
+            "apiVersion": "2021-10-01-preview",
+            "name": "[concat(parameters('streamingjobs_twitter_stream_project_name'), '/tweet-sql-db-output')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.StreamAnalytics/streamingjobs', parameters('streamingjobs_twitter_stream_project_name'))]"
+            ],
+            "properties": {
+                "datasource": {
+                    "type": "Microsoft.Sql/Server/Database",
+                    "properties": {
+                        "maxWriterCount": 1,
+                        "maxBatchCount": 10000,
+                        "table": "[[dbo].[Tweets]",
+                        "server": "twitterstreamproject",
+                        "database": "TwitterStreamDb",
+                        "user": "twitterstreamadmin",
+                        "authenticationMode": "ConnectionString"
+                    }
+                }
+            }
+        }
+    ]
+}
