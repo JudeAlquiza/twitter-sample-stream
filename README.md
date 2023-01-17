@@ -47,7 +47,7 @@ For security purposes, we store these information to secrets manager so that we 
 #### Installation
 The Twitter Stream Angular App project is located in this folder ui/twitter-stream-ng
 
-Run `npm install` to install the packages and run `ng serv`e to run the angular app locally.
+Run `npm install` to install the packages and run `ng serve` to run the angular app locally.
 
 Navigate to `https://localhost:4200` to access the app.
 
