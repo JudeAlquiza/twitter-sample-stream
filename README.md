@@ -17,7 +17,7 @@ Note that I've used the approach in this [article](https://learn.microsoft.com/e
 - Angular app then calls this Web API and displays the needed data in the browser, the app is set to refresh every 30 seconds so updated data can be retrieved and shown to the user.
 
 
-## Local Setup
+## Local Development Setup
 ### Twitter Stream Listener 
 #### Configuration
 The Twitter Stream Listener solution file is located at core/TwitterStreamListener
@@ -42,3 +42,8 @@ dotnet user-secrets set "ConnectionStrings:TwitterStreamDb" "<Enter your connect
 ```
 
 For security purposes, we store these information to secrets manager so that we don't include them in the source control.
+
+### Twitter Stream Angular App
+#### Installation
+
+## Azure Cloud Setup
