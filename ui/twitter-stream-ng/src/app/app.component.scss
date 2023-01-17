@@ -19,13 +19,44 @@
         width: 30rem;
     }
 
+    &__tweet-info {
+        margin-bottom: 1rem;
+        padding: 0.5rem;
+    }
+
+    &__tweet-text {
+        font-size: medium;
+        margin-top: -0.5rem;
+    }
+
+    &__tweet-date {
+        font-size: smaller;
+    }
+
     &__top10-hashtags {
         width: 20rem;
         margin-left: 5rem;
     }
 
+    &__hashtag-info {
+        margin-bottom: 1rem;
+        padding: 0.5rem;
+    }
+
+    &__hashtag-text {
+        font-size: medium;
+        margin-top: -0.5rem;
+    }
+
+    &__hashtag-count {
+        font-size: smaller;
+        margin-top: -0.5rem;
+    }
+
     &__total-tweets {
         width: 20rem;
         margin-left: 5rem;
+        font-size: xx-large;
+        font-weight: bolder;
     }
 }

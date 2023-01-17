@@ -2,6 +2,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
+import { HashTag } from 'src/app/models/hash-tag';
+import { Tweet } from 'src/app/models/tweet';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -22,7 +24,22 @@ export class TwitterStreamDataService {
       );
   }
 
-  getTop10HashTagsByHourWindow(hourWindow?: number): Observable<string[]> {
+  getMostRecentTweets(count?: number): Observable<Tweet[]> {
+
+    const url = `${environment.twitterStreamWebApiRootUrl}/tweets`;
+
+    const params: any = this.createHttpParams({
+      count
+    });
+
+    return this._httpClient
+      .get<Tweet[]>(url, { params, observe: 'response' })
+      .pipe(
+        map((response: any) => response.body)
+      );
+  }
+
+  getTop10HashTagsByHourWindow(hourWindow?: number): Observable<HashTag[]> {
 
     const url = `${environment.twitterStreamWebApiRootUrl}/hash-tags/rpc/get-top-10`;
 
@@ -31,7 +48,7 @@ export class TwitterStreamDataService {
     });
 
     return this._httpClient
-      .get<string[]>(url, { params, observe: 'response' })
+      .get<HashTag[]>(url, { params, observe: 'response' })
       .pipe(
         map((response: any) => response.body)
       );

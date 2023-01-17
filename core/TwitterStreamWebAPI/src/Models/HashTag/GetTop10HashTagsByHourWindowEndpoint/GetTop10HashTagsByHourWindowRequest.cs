@@ -4,6 +4,14 @@ namespace Models.HashTag.GetTop10HashTagsByHourWindowEndpoint;
 
 public class GetTop10HashTagsByHourWindowRequest
 {
-    [BindFrom("hourWindow")] 
-    public int HourWindow { get; set; } = 1;
+    const int maxHourWindow = 24;
+
+    private int _hourWindow = 12;
+
+    [BindFrom("hourWindow")]
+    public int HourWindow
+    {
+        get => _hourWindow;
+        set => _hourWindow = (value > maxHourWindow) ? maxHourWindow : value;
+    }
 }

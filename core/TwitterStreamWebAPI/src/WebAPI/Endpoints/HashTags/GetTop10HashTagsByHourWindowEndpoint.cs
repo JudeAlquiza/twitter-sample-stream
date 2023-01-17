@@ -7,7 +7,7 @@ namespace WebAPI.Endpoints.HashTags;
 
 
 [HttpGet("hash-tags/rpc/get-top-10"), AllowAnonymous]
-public class GetTop10HashTagsByHourWindowEndpoint : Endpoint<GetTop10HashTagsByHourWindowRequest, IList<string>>
+public class GetTop10HashTagsByHourWindowEndpoint : Endpoint<GetTop10HashTagsByHourWindowRequest, IList<HashTagModel>>
 {
     private readonly IHashTagService _hashTagService;
 

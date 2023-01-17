@@ -63,7 +63,7 @@ public class TwitterStreamListenerWorker : BackgroundService
 
             // This is so I don't get charge a lot of $$$$$ across
             // all my twitter stream project resources
-            Thread.Sleep(1500);
+            // Thread.Sleep(1500);
 
             await _eventHubService.SendTweetsToEventHubAsync(new List<TweetEventHubMessageModel> { tweetEventHubMessageModel });
             await _eventHubService.SendHashTagsToEventHubAsync(hashTags);
