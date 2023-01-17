@@ -1,5 +1,22 @@
 # Twitter Stream Project
 
+## Architecture
+This is the overall architecture of the project.
+
+![Architecture diagram](/images/architecture_diagram.png "Architecture diagram")
+
+Note that I've used the approach in this [article](https://learn.microsoft.com/en-us/azure/stream-analytics/stream-analytics-twitter-sentiment-analysis-trends) from Microsoft as a reference architecture with a couple modifications as shown above.
+
+**I haven't used any of the code in the article's github reference, instead I coded my own implementation from scratch using my own modified architecture above.**
+
+### Data Flow
+- Listener (worker) service monitors the Twitter sample stream endpoint for incoming tweets.
+- Once a tweet is received, information about the actual text of the tweet and hash tags from the tweet are extracted and sent to the event hub. Tweet information is sent to the *tweet-received* topic and hash tag information is sent to the *hash-tag-received* topic.
+- Data for both tweets and hash tags from the event hub are piped to an Azure SQL Server database via an Azure Stream Analytics Job as shown in the diagram above. 
+- Web API exposes endpoints for returning the top 10 hash tags given an hour window value (for example hourWindow=1 means get the top 10 hash tags for the past hour, etc..) and total number of tweets received.
+- Angular app then calls this Web API and displays the needed data in the browser, the app is set to refresh every 30 seconds so updated data can be retrieved and shown to the user.
+
+
 ## Local Setup
 ### Twitter Stream Listener 
 #### Configuration
