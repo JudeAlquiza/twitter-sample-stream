@@ -29,7 +29,7 @@ dotnet user-secrets set "TwitterApi:BearerToken" "<Enter your bearer token here>
 dotnet user-secrets set "EventHub:ConnectionString" "<Enter your event hub connection string here>"
 ```
 
-For security purposes, we store these information to secrets manager so that we don't include them in the source control.
+For security purposes, we store these information using secrets manager so that we don't include them in source control.
 
 ### Notes
 Twitter Stream Listener uses [tweetinvi](https://github.com/linvi/tweetinvi) to listen the sample stream API endpoint, and it also takes care of the rate limit handling.
@@ -65,7 +65,7 @@ Local configuration uses secret manager, run the following command from the dire
 dotnet user-secrets set "ConnectionStrings:TwitterStreamDb" "<Enter your connection string here>"
 ```
 
-For security purposes, we store these information to secrets manager so that we don't include them in the source control.
+For security purposes, we store these information using secrets manager so that we don't include them in source control.
 
 ## Twitter Stream Angular App
 ### UI Screenshot
